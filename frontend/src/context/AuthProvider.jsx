@@ -50,15 +50,16 @@ export function AuthProvider({ children }) {
     }
   };
 
-  const logout = async () => {
-    try {
-      await api.get("/api/auth/logout");
-      setUser(null);
-    } catch (error) {
-      setErr(error.response?.data?.message || "Logout failed");
-      console.error("Logout failed:", error.response?.data || error.message);
-    }
-  };
+const logout = async () => {
+  try {
+    await api.post("/api/auth/logout", {}, { withCredentials: true });
+    setUser(null);
+  } catch (error) {
+    setErr(error.response?.data?.message || "Logout failed");
+    console.error("Logout failed:", error.response?.data || error.message);
+  }
+};
+
 
   return (
     <AuthContext.Provider value={{ user, loading, err, register, login, logout }}>

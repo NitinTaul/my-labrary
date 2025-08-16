@@ -11,6 +11,7 @@ export default function MyBooks() {
     try {
       setLoading(true);
       const res = await api.get('/api/mybooks');
+
       setMybooks(res.data.mybooks || []);
     } catch (err) {
       console.error(err);

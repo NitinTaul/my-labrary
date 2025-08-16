@@ -22,6 +22,9 @@ app.use(cors({
 }));
 
 // Routes
+console.log('authRoutes is:', authRoutes);
+app.use('/api/books', require('./routes/books'));
+
 app.use('/api/auth', authRoutes);
 app.use('/api/books', booksRoutes);
 app.use('/api/mybooks', myBooksRoutes);
